@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inhaler Tracker</title>
+
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
 <header>
@@ -19,30 +22,38 @@
 <h2>Today's Inhaler Schedule</h2>
 
 <div class="slot" data-time="08:00">
-<h3>8:00 AM</h3>
-<input type="number" placeholder="Score (100-800)" class="score">
-<input type="text" placeholder="Comment" class="comment">
+<h3>08:00</h3>
+<input type="number" class="before" placeholder="Before score">
+<input type="number" class="after" placeholder="After score">
+<div class="improve"></div>
+<textarea class="comment" placeholder="Comment"></textarea>
 <button onclick="saveSlot(this)">Save</button>
 </div>
 
 <div class="slot" data-time="13:00">
-<h3>1:00 PM</h3>
-<input type="number" placeholder="Score (100-800)" class="score">
-<input type="text" placeholder="Comment" class="comment">
+<h3>13:00</h3>
+<input type="number" class="before" placeholder="Before score">
+<input type="number" class="after" placeholder="After score">
+<div class="improve"></div>
+<textarea class="comment" placeholder="Comment"></textarea>
 <button onclick="saveSlot(this)">Save</button>
 </div>
 
 <div class="slot" data-time="18:00">
-<h3>6:00 PM</h3>
-<input type="number" placeholder="Score (100-800)" class="score">
-<input type="text" placeholder="Comment" class="comment">
+<h3>18:00</h3>
+<input type="number" class="before" placeholder="Before score">
+<input type="number" class="after" placeholder="After score">
+<div class="improve"></div>
+<textarea class="comment" placeholder="Comment"></textarea>
 <button onclick="saveSlot(this)">Save</button>
 </div>
 
 <div class="slot" data-time="22:00">
-<h3>10:00 PM</h3>
-<input type="number" placeholder="Score (100-800)" class="score">
-<input type="text" placeholder="Comment" class="comment">
+<h3>22:00</h3>
+<input type="number" class="before" placeholder="Before score">
+<input type="number" class="after" placeholder="After score">
+<div class="improve"></div>
+<textarea class="comment" placeholder="Comment"></textarea>
 <button onclick="saveSlot(this)">Save</button>
 </div>
 
@@ -50,22 +61,33 @@
 
 <input id="alcoholUnits" type="number" placeholder="Alcohol units">
 <input id="drinkType" type="text" placeholder="Drink type">
+
 <select id="breathingImpact">
 <option value="">Breathing impact</option>
-<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
 </select>
 
 <input id="exercise" type="text" placeholder="Exercise today">
+
 <button onclick="saveDaily()">Save Daily Summary</button>
+
+<h2>Improvement Trend</h2>
+
+<canvas id="trendChart"></canvas>
 
 </div>
 
 <nav class="bottomnav">
-<button onclick="alert('Home')">Home</button>
-<button onclick="alert('Logs saved locally')">Log</button>
+<button onclick="showHome()">Home</button>
+<button onclick="showTrends()">Trends</button>
 <button onclick="exportData()">Export</button>
 </nav>
 
 <script src="app.js"></script>
+
 </body>
 </html>
